@@ -1,20 +1,39 @@
 import {getInitialData} from '../utils/api'
-import {receiveQuestions} from  './questions'
 import {receiveUsers} from './users'
+import {receiveQuestions} from  './questions.js'
 import {setAuthedUser} from './authedUser'
+import { showLoading, hideLoading } from 'react-redux-loading'
 
 
-const AUTHED_ID ='sarahedo'
+//const AUTHED_ID ='johndoe'
 
-export default function  handleIntialData(){
+
+export const handleSetAuhtedUser =(authedUser)  =>{
+   
+  // console.log('set var', authedUser)
+    return (dispatch)=> {
+         
+       return  dispatch(setAuthedUser(authedUser)) 
+      
+
+       }
+   }
+     
+export   const  handleIntialData =()=>{
 
     return (dispatch)=> {
-        return getInitialData().then(({questions,users})=>{
+         dispatch(showLoading())
+        return getInitialData().then(({users,questions})=>{
 
-            dispatch(receiveQuestions(questions))
+            
             dispatch(receiveUsers(users))
-            dispatch(setAuthedUser(AUTHED_ID))
+            dispatch(receiveQuestions(questions))
+            
+            //dispatch(setAuthedUser(AUTHED_ID))
+              dispatch(hideLoading())
         })
     }
 
 }
+
+  

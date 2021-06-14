@@ -1,57 +1,74 @@
 import React, { Component } from 'react'
-import {Button ,Nav,Navbar } from 'react-bootstrap';
 import {connect} from 'react-redux'
-import { NavLink } from 'react-router-dom'
+ import { NavLink} from 'react-router-dom'
+import {Button,Navbar} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {handleSetAuhtedUser} from '../actions/shared'
 
 
 class QNavbar extends Component{
 
- 
+  handleLogout =()=>{
+    this.props.dispatch(handleSetAuhtedUser(''))
+
+  }
   
-    
+   
     
       render(){
-        const {loginuser ,users} = this.props
-    
-        return(
-            <Navbar   bg="light" variant="outline-success" className='d-flex" m-2   '>
+     //console.log('this nave bar lgin props',this.props.authedUser) 
+        
+     return( 
+       <div> 
+        
+
+
+       
+       <nav className='nav'>
+       <ul>
+         <li>
+           <NavLink to='/' exact activeClassName='active'>
+             Home
+           </NavLink>
+         </li>
+         <li>
+           <NavLink to='/newquestion' activeClassName='active'>
+             New Question
+           </NavLink>
+           </li>
+           <li>
+           <NavLink to='/leaderBoard' activeClassName='active'>
+           Leader Board
+           </NavLink>
+           </li>
+
          
-            
-
-          <Nav fill variant="tabs" defaultActiveKey="/" >
-         <Nav.Item>
-         <Nav.Link href="/" className='m-3' >Home</Nav.Link>
-            </Nav.Item>
-             <Nav.Item>
-         <Nav.Link eventKey="add" className='m-3'>New Question</Nav.Link>
-           </Nav.Item>
-               <Nav.Item>
-             <Nav.Link eventKey="leader" className='m-3'>LeaderBoard</Nav.Link>
-                     </Nav.Item>
-                                </Nav>
-                                <Nav>
-                                <Navbar.Text>Welcome hamada</Navbar.Text>
-                                 
-                                <Button variant="outline-success" onClick ={this.LogOutBtn}>LogOut</Button>
-                    
-                      
-                              </Nav>
-                      
-                             
-                   
-                   
-
-       </Navbar>
-        )
-      }  
+       </ul>
+       <div className="justify-content-end">
+        <Navbar className="justify-content-end">
+   <Navbar.Toggle />
+  <Navbar.Collapse className="justify-content-end">
+    <Navbar.Text>
+      Welcome: {this.props.userName}   <Button variant="link" onClick={this.handleLogout}>logOut</Button>
+       
+    </Navbar.Text>
+  </Navbar.Collapse>
+</Navbar></div>
+    </nav>
+   
+         </div>
+     )
+ }
 
 }
-function mapStateToProps({loginuser,users}) {
-    return{
-      loginuser,
-      users
-  
-    }}
+ function MapStateToProps({users,authedUser}){
 
-export default connect(mapStateToProps)(QNavbar)
+   const userName = users[authedUser].name
+
+
+  return {
+    userName
+  }
+ }
+
+export default connect( MapStateToProps)(QNavbar)

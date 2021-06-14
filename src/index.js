@@ -4,14 +4,14 @@ import './index.css';
 import App from './components/App';
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
-import reducer from './reducers/index'
+import reducers from './reducers/index'
 import applyMiddleware from './middleware/index'
 
-const store= createStore(reducer,applyMiddleware)
+const store= createStore(reducers,applyMiddleware)
  
 ReactDOM.render(
   <Provider  store={store}>
-    <App />
+    <App    />
   </Provider>,
   document.getElementById('root')
 );

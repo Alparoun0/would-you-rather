@@ -1,22 +1,26 @@
-import{
-    _getQuestions,
+import {
   _getUsers,
+  _getQuestions,
   _saveQuestion,
-  _saveQuestionAnswer,
-
+  _saveQuestionAnswer
+   
 } from './_DATA'
 
+export function getInitialData () {
+  return Promise.all([
+    _getUsers(),
+    _getQuestions()
+      ]).then(([users, questions]) => ({
+    users,
+    questions,
+  }))
+}
 
-export function getInitialData(){
-    return Promise.all([
-        _getUsers(),
-        _getQuestions(),
-        _getUsers
-       ]).then(([users, questions,authedUser]) => ({
-        users,
-        questions,
-        authedUser
-      }))
-    }
- 
+export function saveQuestion (info) {
+   
+  return _saveQuestion(info)
+}
 
+export   function saveQuestionAnswer (info) {
+  return _saveQuestionAnswer(info)
+}
