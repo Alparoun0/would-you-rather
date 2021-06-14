@@ -42,9 +42,9 @@ class QuestionResult extends Component{
                 </div>
                 <br/>
                 <div className='item'>{(questionResult.choice==='optionTwo') ? <span class="notify-badge">Your Vote</span> : null}
-                <p className="text_column"> Q2: {questionResult.questionOptionTwotext}
+                <p className="text_column"> Q2: {questionResult.questionOptionTwotext}</p>
 
-                <ProgressBar now={now} label={`${(questionResult.questionTwoVote / questionResult.questionTotal)* 100}%`} /> </p> 
+                <ProgressBar now={now} label={`${(questionResult.questionTwoVote / questionResult.questionTotal)* 100}%`} />  
                 <p className='text-center'>     {questionResult.questionTwoVote} Out of {questionResult.questionTotal}</p>
                 </div>
                 <Link to={'/'}>
