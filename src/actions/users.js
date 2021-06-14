@@ -1,8 +1,6 @@
-
-
 import { showLoading, hideLoading } from 'react-redux-loading'
 import {saveQuestionAnswer } from '../utils/api'
-  import {addAnswerToQuestion} from './questions'
+import {addAnswerToQuestion} from './questions'
  
 export const RECEIVE_USERS='RECEIVE_USERS'
 export const ANSWER_THEQUESTION ='ANSWER_THEQUESTION'

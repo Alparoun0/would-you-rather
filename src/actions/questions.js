@@ -55,26 +55,3 @@ export function addAnswerToQuestion(authedUser,qid,answer) {
             
         }
         }
-// export  default  function handleAddQuestion (question){
-//     return async  dispatch  =>{
-          
-//         dispatch(showLoading())   
-
-//            console.log('Add New Question option text : ', question)
-
-
-//          return await  saveQuestion(question).then((result) => {
-//             console.log('_saveQuestionAnswer result: ', result)
-//             dispatch(addQuestion(result))
-//             dispatch(addQuestionToUser(result))
-            
-//           dispatch(hideLoading())
-//     } ).catch((e) => {
-//     console.warn('Error in handleToggleTweet: ', e)
-   
-//     alert('The was an error liking the tweet. Try again.')})
-
-
-    
-// }
-// }
